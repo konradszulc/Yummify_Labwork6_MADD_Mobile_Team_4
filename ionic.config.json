@@ -1,0 +1,7 @@
+{
+  "name": "yummifyApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
