@@ -1,7 +1,10 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonMenuToggle, IonRouterOutlet, IonTitle, IonToast, IonToolbar, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import Welcome from './pages/Welcome';
+import Register from './pages/Register';
+import { closeOutline, personCircleOutline } from 'ionicons/icons';
+import { userSignOut } from './firebaseConfig';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -32,22 +35,112 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import '@ionic/react/css/palettes/dark.always.css'; // Added dark theme -LK
+import Login from './pages/Login';
+import { useEffect, useState } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+
+const App: React.FC = () => {
+  const auth = getAuth();
+  const [isOpen, setIsOpen] = useState(false);
+  const [redirectToLogin, setRedirectToLogin] = useState(false); // Track redirect
+  const [email, setEmail] = useState<string | null>(null);
+
+  async function signedOut() {
+
+    const resolution = await userSignOut()
+    if (resolution) {
+      setIsOpen(true)
+      setRedirectToLogin(false);
+
+      setTimeout(() => {
+        setRedirectToLogin(true);
+      }, 1000);
+    }
+  };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setEmail(user.email);
+      } else {
+        setEmail(null);
+      }
+    });
+  }, [auth]);
+
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonMenu contentId="main-pages">
+          <IonHeader>
+            <IonToolbar>
+              <IonTitle className='app-title'>Snippet Menu</IonTitle>
+              <IonButtons slot="end">
+                <IonMenuToggle autoHide>
+                  <IonButton>
+                    <IonIcon icon={closeOutline} size="large"></IonIcon>
+                  </IonButton>
+                </IonMenuToggle>
+              </IonButtons>
+            </IonToolbar>
+          </IonHeader>
+          <IonContent>
+            <IonList>
+              <IonItem lines="none">
+                <IonLabel className='email'>{email || "No User Logged In"}</IonLabel>
+                <IonIcon className='icon' icon={personCircleOutline} slot="end" size="large"></IonIcon>
+              </IonItem>
+              <IonMenuToggle autoHide>
+                <IonItem button routerLink="/LandingPage">
+                  <IonLabel className='menu-button'>My Code Snippets</IonLabel>
+                </IonItem>
+                <IonItem button routerLink="/AddSnippets" lines="none">
+                  <IonLabel className='menu-button'>Add Snippets</IonLabel>
+                </IonItem>
+                {email !== null && (
+                  <IonButton className='submit hover' expand="block" onClick={signedOut}>Sign Out</IonButton>
+                )}
+                {email == null && (
+                  <IonButton className='submit hover' expand="block" routerLink="/Login">Sign in</IonButton>
+                )}
+              </IonMenuToggle>
+            </IonList>
+            <IonToast isOpen={isOpen} message="Signed Out"
+              onDidDismiss={() => setIsOpen(false)}
+              duration={5000}></IonToast>
+            {redirectToLogin && (
+              <Redirect to="/Login" />
+            )}
+          </IonContent>
+        </IonMenu>
+
+
+
+        <IonRouterOutlet id="main-pages">
+          <Route exact path="/Welcome">
+            <Welcome />
+          </Route>
+          <Route exact path="/Register">
+            <Register />
+          </Route>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/Home" />
+          </Route>
+
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  )
+};
 
 export default App;

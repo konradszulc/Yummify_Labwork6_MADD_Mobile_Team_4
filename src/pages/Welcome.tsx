@@ -1,0 +1,34 @@
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader,IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+
+import React from 'react';
+
+
+const Welcome: React.FC = () => {
+  return (
+    <IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <div className='title-padding'></div>
+          <IonTitle className='title centered-content'>
+            <p className='welcome'>Welcome to</p>
+            CodAtlas</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent className='ion-padding'>
+        <IonGrid>
+          <IonRow>
+            <IonCol size="12">
+              <div className='register-padding'></div>
+              <IonButton className='hover submit' routerLink="/Registration">Register</IonButton>
+              <p className='font1'>Already have an account?</p>
+              <p className='font2'>Click below to go to login</p>
+              <IonButton className='hover submit' routerLink="/Login">Login</IonButton>
+            </IonCol>
+          </IonRow>
+        </IonGrid>
+      </IonContent>
+    </IonPage>
+  );
+};
+
+export default Welcome;
