@@ -42,46 +42,29 @@ const Search: React.FC = () => {
       <IonHeader>
         <IonToolbar className="search-toolbar">
           <IonButtons slot="start">
-            <IonBackButton defaultHref="/home" />
+            <IonBackButton defaultHref="/home"></IonBackButton>
           </IonButtons>
-          <IonText className="search-title">
-            <h1>Search Recipes</h1>
-          </IonText>
+          <IonText className="search-title"> Search Recipes</IonText>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="search-content">
         <IonGrid>
           <IonRow>
             <IonCol size="12">
-              <IonText className="search-description">
-                <p>
-                  Discover recipes from our global database. Search by name or main ingredient.
-                </p>
-              </IonText>
+              <IonText className="search-description"> Discover recipes from our global database. Search by name or main ingredient.</IonText>
             </IonCol>
           </IonRow>
 
           <IonRow>
             <IonCol size="12" className="search-image-container">
-              <IonImg
-                src="https://images.unsplash.com/photo-1506368083636-6defb67639a7?w=800&q=80"
-                alt="Fresh ingredients"
-                className="search-hero-image"
-              />
-              <IonSearchbar
-                value={searchQuery}
-                onIonInput={handleSearch}
-                placeholder="e.g. Chocolate brownies"
-                className="custom-searchbar search-bar-wrapper"
-              />
+              <IonImg src="https://images.unsplash.com/photo-1506368083636-6defb67639a7?w=800&q=80" alt="Fresh ingredients" className="search-hero-image"></IonImg>
+              <IonSearchbar value={searchQuery} onIonInput={handleSearch} placeholder="e.g. Chocolate brownies" className="custom-searchbar search-bar-wrapper"></IonSearchbar>
             </IonCol>
           </IonRow>
 
           <IonRow>
             <IonCol size="12">
-              <IonText className="recipes-found">
-                <h2>{recipes.length} Recipes Found</h2>
-              </IonText>
+              <IonText className="recipes-found">{recipes.length} Recipes Found </IonText>
             </IonCol>
           </IonRow>
 
@@ -96,9 +79,7 @@ const Search: React.FC = () => {
           {error && (
             <IonRow>
               <IonCol size="12">
-                <IonText color="danger">
-                  <p>{error}</p>
-                </IonText>
+                <IonText color="danger">{error}</IonText>
               </IonCol>
             </IonRow>
           )}

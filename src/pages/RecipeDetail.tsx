@@ -117,8 +117,7 @@ const RecipeDetail: React.FC = () => {
 
                     <IonRow>
                         <IonCol size="12">
-                            <IonText className="section-title">
-                                <h2>Ingredients</h2>
+                            <IonText className="section-title">Ingredients
                             </IonText>
                         </IonCol>
                     </IonRow>
@@ -126,34 +125,23 @@ const RecipeDetail: React.FC = () => {
                     {recipe.ingredients.map((item, index) => (
                         <IonRow key={index} className="ingredient-row">
                             <IonCol size="auto" className="ingredient-number-col">
-                                <IonText className="ingredient-number">
-                                    <h3>{index + 1}</h3>
-                                </IonText>
+                                <IonText className="ingredient-number">{index + 1}</IonText>
                             </IonCol>
                             <IonCol>
-                                <IonText className="ingredient-text">
-                                    <p>
-                                        {item.measure && `${item.measure} `}
-                                        {item.ingredient}
-                                    </p>
-                                </IonText>
+                                <IonText className="ingredient-text"> {item.measure && `${item.measure} `}{item.ingredient}</IonText>
                             </IonCol>
                         </IonRow>
                     ))}
 
                     <IonRow>
                         <IonCol size="12">
-                            <IonText className="section-title">
-                                <h2>Instructions:</h2>
-                            </IonText>
+                            <IonText className="section-title">Instructions:</IonText>
                         </IonCol>
                     </IonRow>
 
                     <IonRow>
                         <IonCol size="12">
-                            <IonText className="instructions-text">
-                                <p>{recipe.instructions}</p>
-                            </IonText>
+                            <IonText className="instructions-text"> {recipe.instructions} </IonText>
                         </IonCol>
                     </IonRow>
                 </IonGrid>

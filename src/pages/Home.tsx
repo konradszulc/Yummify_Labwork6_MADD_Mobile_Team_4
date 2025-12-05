@@ -39,9 +39,7 @@ const Home: React.FC = () => {
         <IonGrid className="home-grid">
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonButton className="explore-button" size="small">
-                Explore more recipes
-              </IonButton>
+              <IonButton className="explore-button" size="small">Explore more recipes</IonButton>
             </IonCol>
           </IonRow>
 
@@ -53,19 +51,13 @@ const Home: React.FC = () => {
                     <IonGrid>
                       <IonRow className="ion-align-items-center">
                         <IonCol size="auto">
-                          <IonImg src={recipe.image} alt={recipe.name} className="recipe-image" />
+                          <IonImg src={recipe.image} alt={recipe.name} className="recipe-image"></IonImg>
                         </IonCol>
                         <IonCol>
-                          <IonText className="recipe-name">
-                            <p>{recipe.name}</p>
-                          </IonText>
+                          <IonText className="recipe-name">{recipe.name}</IonText>
                         </IonCol>
                         <IonCol size="auto">
-                          <IonIcon
-                            icon={recipe.isFavorite ? heart : heartOutline}
-                            className={recipe.isFavorite ? "favorite-icon filled" : "favorite-icon"}
-                            onClick={() => toggleFavorite(recipe.id)}
-                          />
+                          <IonIcon icon={recipe.isFavorite ? heart : heartOutline} className={recipe.isFavorite ? "favorite-icon filled" : "favorite-icon"} onClick={() => toggleFavorite(recipe.id)}></IonIcon>
                         </IonCol>
                       </IonRow>
                     </IonGrid>
@@ -78,7 +70,7 @@ const Home: React.FC = () => {
 
         <IonFab slot="fixed" vertical="bottom" horizontal="end" className="add-fab">
           <IonFabButton className="add-fab-button" routerLink="/Add">
-            <IonIcon icon={add} />
+            <IonIcon icon={add}></IonIcon>
           </IonFabButton>
         </IonFab>
       </IonContent>

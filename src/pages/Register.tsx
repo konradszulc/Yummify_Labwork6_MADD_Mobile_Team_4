@@ -14,11 +14,14 @@ const Register: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [redirectToTutorial, setRedirectToTutorial] = useState(false);
     const [isRegistering, setIsRegistering] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
+        
         const createAccount = onAuthStateChanged(auth, (user: User | null) => {
-            // Only redirect if we're actively registering a new user
-            if (user && isRegistering) {
+            // Only redirect if we're actively registering a new user AND component is mounted
+            if (user && isRegistering && isMounted) {
                 // User is signed in, show success toast and redirect after delay
                 setIsOpen(true);
                 setTimeout(() => {
@@ -28,8 +31,11 @@ const Register: React.FC = () => {
         });
 
         // Cleanup on unmount
-        return () => createAccount();
-    }, [isRegistering]);
+        return () => {
+            setIsMounted(false);
+            createAccount();
+        };
+    }, [isRegistering, isMounted]);
 
     async function registerComplete() {
         console.log(password, conPassword)
@@ -55,7 +61,7 @@ const Register: React.FC = () => {
     }
 
     if (redirectToTutorial) {
-        return <Redirect to="/Tutorial1" />;
+        return <Redirect to="/Tutorial1"/>;
     }
     return (
         <IonPage>
@@ -68,9 +74,7 @@ const Register: React.FC = () => {
                 <IonGrid className="register-grid">
                     <IonRow className="ion-justify-content-center">
                         <IonCol size="12" sizeMd="8" sizeLg="6">
-                            <IonText color="medium">
-                                <p className="register-subtitle">Create your account to start managing your recipes!</p>
-                            </IonText>
+                            <IonText color="medium" className="register-subtitle">Create your account to start managing your recipes!</IonText>
                         </IonCol>
                     </IonRow>
 
@@ -127,12 +131,7 @@ const Register: React.FC = () => {
                     </IonRow>
                 </IonGrid>
 
-                <IonToast
-                    isOpen={isOpen}
-                    message="User Created Successfully"
-                    onDidDismiss={() => setIsOpen(false)}
-                    duration={2000}
-                />
+                <IonToast isOpen={isOpen} message="User Created Successfully" onDidDismiss={() => setIsOpen(false)} duration={2000}></IonToast>
             </IonContent>
         </IonPage>
     );

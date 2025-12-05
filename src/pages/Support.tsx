@@ -35,13 +35,7 @@ const Support: React.FC = () => {
                         <IonCol size="12" sizeMd="8" sizeLg="6">
                             <IonCard className="info-card">
                                 <IonCardContent>
-                                    <IonText className="info-text">
-                                        <p>
-                                            This app is created by a group of students as a course
-                                            project. If you have any question, find a bug or want to
-                                            suggest new feature, feel free to reach out.
-                                        </p>
-                                    </IonText>
+                                    <IonText className="info-text">This app is created by a group of students as a course project. If you have any question, find a bug or want to suggest new feature, feel free to reach out.</IonText>
                                 </IonCardContent>
                             </IonCard>
                         </IonCol>
@@ -54,25 +48,19 @@ const Support: React.FC = () => {
                     <IonGrid>
                         <IonRow className="ion-justify-content-center">
                             <IonCol size="12" className="ion-text-center">
-                                <IonText className="contact-label">
-                                    <p>Contact us at:</p>
-                                </IonText>
+                                <IonText className="contact-label">Contact us at:</IonText>
                             </IonCol>
                         </IonRow>
 
                         <IonRow className="ion-justify-content-center">
                             <IonCol size="12" className="ion-text-center">
-                                <IonText color="warning" className="email-text">
-                                    <p>yummifyteam@gmail.com</p>
-                                </IonText>
+                                <IonText color="warning" className="email-text">yummifyteam@gmail.com</IonText>
                             </IonCol>
                         </IonRow>
 
                         <IonRow className="ion-justify-content-center">
                             <IonCol size="12" className="ion-text-center">
-                                <IonText className="response-text">
-                                    <p>We'll get back to you as soon as possible.</p>
-                                </IonText>
+                                <IonText className="response-text">We'll get back to you as soon as possible</IonText>
                             </IonCol>
                         </IonRow>
                     </IonGrid>

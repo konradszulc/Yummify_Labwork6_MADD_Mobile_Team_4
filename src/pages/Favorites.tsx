@@ -39,18 +39,13 @@ const Favorites: React.FC = () => {
                     <IonGrid>
                       <IonRow className="ion-align-items-center">
                         <IonCol size="auto">
-                          <IonImg src={recipe.image} alt={recipe.name} className="favorite-image" />
+                          <IonImg src={recipe.image} alt={recipe.name} className="favorite-image"></IonImg>
                         </IonCol>
                         <IonCol>
-                          <IonText className="favorite-name">
-                            <p>{recipe.name}</p>
-                          </IonText>
+                          <IonText className="favorite-name">{recipe.name}</IonText>
                         </IonCol>
                         <IonCol size="auto">
-                          <IonIcon
-                            icon={heart}
-                            className="favorite-heart"
-                          />
+                          <IonIcon icon={heart}className="favorite-heart"></IonIcon>
                         </IonCol>
                       </IonRow>
                     </IonGrid>
