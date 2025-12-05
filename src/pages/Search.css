@@ -1,5 +1,11 @@
 .search-content {
     --background: #e8f5b8;
+    --padding-start: 0;
+    --padding-end: 0;
+}
+
+.search-content ion-grid {
+    padding: 0;
 }
 
 .search-toolbar {
@@ -13,7 +19,6 @@
     font-weight: bold;
     color: #da8f56;
     text-align: center;
-<<<<<<< HEAD
     padding-right: 40px;
 }
 
@@ -22,14 +27,13 @@
     font-weight: bold;
     margin: 0;
     color: #333;
-=======
->>>>>>> a4829f7bf0c3815bcb19fe432977202eb7da3a0b
 }
 
 .search-description {
     text-align: center;
-    padding: 16px 20px 8px;
+    padding: 16px 16px 8px;
     color: black;
+    width: 100%;
 }
 
 .search-description p {
@@ -37,11 +41,12 @@
     color: #333;
     margin: 0;
     line-height: 1.5;
+    text-align: center;
 }
 
 .search-image-container {
     position: relative;
-    margin: 16px;
+    margin: 16px 0;
     border-radius: 12px;
     overflow: hidden;
 }
