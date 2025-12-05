@@ -1,7 +1,8 @@
-import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonPage, IonRow, IonText, IonTitle, IonToast, IonToolbar } from '@ionic/react';
 import React, { useState, useEffect } from 'react';
 import { loginUser, auth, onAuthStateChanged, User } from '../firebaseConfig';
-import { Link, Redirect } from "react-router-dom"; // For conditional navigation - only after uer is logged in
+import { Link, Redirect } from "react-router-dom";
+import './Login.css';
 
 
 const Login: React.FC = () => {
@@ -13,8 +14,11 @@ const Login: React.FC = () => {
     useEffect(() => {
         const logIn = onAuthStateChanged(auth, (user: User | null) => {
             if (user) {
-                // User is signed in
-                setLoggedIn(true);
+                // User is signed in, show success toast and redirect after delay
+                setIsOpen(true);
+                setTimeout(() => {
+                    setLoggedIn(true);
+                }, 2000); // Wait 2 seconds for toast to show
             }
         });
 
@@ -29,40 +33,56 @@ const Login: React.FC = () => {
             return;
         }
 
-        const resolution = await loginUser(email, password)
-        if (resolution) {
-            setIsOpen(true)
-            // Auth state change will handle the redirect
-        }
+        // Just call loginUser - auth state change will handle the rest
+        await loginUser(email, password);
     }
 
     if (loggedIn) {
-        return <Redirect to="/LandingPage" />; // Conditional navigation
+        return <Redirect to="/Home" />;
     }
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonButtons slot='start'>
-                        <IonBackButton className='back-button' defaultHref='/Home'></IonBackButton>
-                    </IonButtons>
-                    <IonTitle className='login'>Login</IonTitle>
+                    <IonTitle className="login-title">Login</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent className="ion-padding">
-                <IonItem className='placeholder'>
-                    <IonInput placeholder="Enter Email" onIonChange={(e) => setEmail(e.detail.value!)}></IonInput>
-                </IonItem>
-                <IonItem className='placeholder'>
-                    <IonInput type="password" placeholder="Enter Password" onIonChange={(e) => setPassword(e.detail.value!)}></IonInput>
-                </IonItem>
-                <p className='account'>Don't have an Account? <Link to={`register`}>Click here</Link> to Register</p>
-                <IonButton className='hover submit' expand="block" onClick={loginComplete}>Sign in</IonButton>
-                <IonToast isOpen={isOpen} message="Succesfully logged in"
-                    onDidDismiss={() => setIsOpen(false)}
-                    duration={5000}>
-                </IonToast>
+            <IonContent className="ion-padding login-page">
+                <IonGrid className="login-grid">
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonText color="medium">
+                                <p className="login-subtitle">Welcome back! Please login to your account.</p>
+                            </IonText>
+                        </IonCol>
+                    </IonRow>
 
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonInput className="login-input" placeholder="Email Address" type="email" fill="solid" onIonChange={(e) => setEmail(e.detail.value!)}></IonInput>
+                        </IonCol>
+                    </IonRow>
+
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonInput className="login-input" type="password" placeholder="Password" fill="solid" onIonChange={(e) => setPassword(e.detail.value!)}></IonInput>
+                        </IonCol>
+                    </IonRow>
+
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonButton expand="block" className="signin-btn" onClick={loginComplete}>Sign In</IonButton>
+                        </IonCol>
+                    </IonRow>
+
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
+                            <IonText className="register-text"> Don't have an Account? <Link to="/Register" className="register-link">Register</Link></IonText>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+
+                <IonToast isOpen={isOpen} message="Successfully logged in" onDidDismiss={() => setIsOpen(false)} duration={2000}></IonToast>
             </IonContent>
         </IonPage>
     );

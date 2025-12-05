@@ -1,7 +1,8 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
+import { IonButton, IonCheckbox, IonCol, IonContent, IonGrid, IonHeader, IonInput, IonLabel, IonPage, IonRow, IonText, IonTitle, IonToast, IonToolbar } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 import { auth, onAuthStateChanged, registerUser, User } from '../firebaseConfig'
-import { Link, Redirect } from "react-router-dom"; // For redirecting after registration
+import { Link, Redirect } from "react-router-dom";
+import './Register.css';
 
 
 
@@ -9,20 +10,23 @@ const Register: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [conPassword, setConPassword] = useState('');
+    const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [redirectToTutorial, setRedirectToTutorial] = useState(false);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+        const createAccount = onAuthStateChanged(auth, (user: User | null) => {
             if (user) {
-                // User is signed in, show success toast and redirect
+                // User is signed in, show success toast and redirect after delay
                 setIsOpen(true);
-                setRedirectToTutorial(true);
+                setTimeout(() => {
+                    setRedirectToTutorial(true);
+                }, 2000); // Wait 2 seconds for toast to show
             }
         });
 
         // Cleanup on unmount
-        return () => unsubscribe();
+        return () => createAccount();
     }, []);
 
     async function registerComplete() {
@@ -37,6 +41,10 @@ const Register: React.FC = () => {
             alert("Passwords DO NOT MATCH");
             return;
         }
+        if (!agreedToTerms) {
+            alert("You must agree to Terms & Conditions");
+            return;
+        }
 
         // Just call registerUser - auth state change will handle the rest
         await registerUser(email, password);
@@ -49,29 +57,78 @@ const Register: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle className='registration'>Create Account</IonTitle>
+                    <IonTitle className="register-title">Create Account</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent className="ion-padding">
-                <IonItem className='placeholder'>
-                    <IonInput placeholder="Enter Email" onIonChange={(e) => setEmail(e.detail.value!)}></IonInput>
-                </IonItem>
+            <IonContent className="ion-padding register-page">
+                <IonGrid className="register-grid">
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonText color="medium">
+                                <p className="register-subtitle">Create your account to start managing your recipes!</p>
+                            </IonText>
+                        </IonCol>
+                    </IonRow>
 
-                <IonItem className='placeholder'>
-                    <IonInput type="password" placeholder="Enter Password" onIonChange={(e) => setPassword(e.detail.value!)}></IonInput>
-                </IonItem>
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonInput
+                                className="register-input"
+                                placeholder="Email Address"
+                                type="email"
+                                fill="solid"
+                                onIonChange={(e) => setEmail(e.detail.value!)}
+                            />
+                        </IonCol>
+                    </IonRow>
 
-                <IonItem className='placeholder'>
-                    <IonInput type="password" placeholder="Confirm Password" onIonChange={(e) => setConPassword(e.detail.value!)}></IonInput>
-                </IonItem>
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonInput
+                                className="register-input"
+                                type="password"
+                                placeholder="Password"
+                                fill="solid"
+                                onIonChange={(e) => setPassword(e.detail.value!)}
+                            />
+                        </IonCol>
+                    </IonRow>
 
-                <IonButton className='submit hover' expand="block" onClick={registerComplete}>Sign up</IonButton>
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonInput className="register-input" type="password" placeholder="Confirm Password" fill="solid" onIonChange={(e) => setConPassword(e.detail.value!)}></IonInput>
+                        </IonCol>
+                    </IonRow>
 
-                <p className='register-account'>Already Registered? <Link to = {`login`}>Log In</Link></p>
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6" className="terms-col">
+                            <IonCheckbox checked={agreedToTerms} onIonChange={(e) => setAgreedToTerms(e.detail.checked)} labelPlacement="end">
+                                <IonLabel className="terms-label">I agree with Terms & Conditions</IonLabel>
+                            </IonCheckbox>
+                        </IonCol>
+                    </IonRow>
 
-                <IonToast isOpen={isOpen} message="User Created Succesfully"
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6">
+                            <IonButton expand="block" className="signup-btn" onClick={registerComplete}>Sign Up</IonButton>
+                        </IonCol>
+                    </IonRow>
+
+                    <IonRow className="ion-justify-content-center">
+                        <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
+                            <IonText className="login-text">
+                                Already Registered? <Link to="/Login" className="login-link">Log In</Link>
+                            </IonText>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
+
+                <IonToast
+                    isOpen={isOpen}
+                    message="User Created Successfully"
                     onDidDismiss={() => setIsOpen(false)}
-                    duration={5000}></IonToast>
+                    duration={2000}
+                />
             </IonContent>
         </IonPage>
     );

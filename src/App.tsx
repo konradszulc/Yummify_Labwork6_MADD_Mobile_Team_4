@@ -3,7 +3,7 @@ import { IonApp, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem,
 import { IonReactRouter } from '@ionic/react-router';
 import Welcome from './pages/Welcome';
 import Register from './pages/Register';
-import { closeOutline, personCircleOutline } from 'ionicons/icons';
+import { closeOutline, heartOutline, personCircleOutline, searchOutline } from 'ionicons/icons';
 import { userSignOut } from './firebaseConfig';
 
 /* Core CSS required for Ionic components to work properly */
@@ -39,7 +39,14 @@ import '@ionic/react/css/palettes/dark.always.css'; // Added dark theme -LK
 import Login from './pages/Login';
 import { useEffect, useState } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
+import Tutorial2 from './pages/Tutorial2';
+import About from './pages/About';
+import Favorites from './pages/Favorites';
+import Home from './pages/Home';
+import Search from './pages/Search';
+import Tutorial1 from './pages/Tutorial1';
+import Tutorial3 from './pages/Tutorial3';
+import Support from './pages/Support';
 
 
 setupIonicReact();
@@ -81,11 +88,11 @@ const App: React.FC = () => {
         <IonMenu contentId="main-pages">
           <IonHeader>
             <IonToolbar>
-              <IonTitle className='app-title'>Snippet Menu</IonTitle>
+              <IonTitle>Yummify Menu</IonTitle>
               <IonButtons slot="end">
                 <IonMenuToggle autoHide>
                   <IonButton>
-                    <IonIcon icon={closeOutline} size="large"></IonIcon>
+                    <IonIcon slot= 'start' icon={closeOutline} size="large"></IonIcon>
                   </IonButton>
                 </IonMenuToggle>
               </IonButtons>
@@ -95,20 +102,31 @@ const App: React.FC = () => {
             <IonList>
               <IonItem lines="none">
                 <IonLabel className='email'>{email || "No User Logged In"}</IonLabel>
-                <IonIcon className='icon' icon={personCircleOutline} slot="end" size="large"></IonIcon>
+                <IonIcon icon={personCircleOutline} slot="end" size="large"></IonIcon>
               </IonItem>
               <IonMenuToggle autoHide>
-                <IonItem button routerLink="/LandingPage">
-                  <IonLabel className='menu-button'>My Code Snippets</IonLabel>
+                <IonItem button routerLink="/Favorites" lines="none">
+                  <IonLabel className='menu-button'>Favorites</IonLabel>
+                  <IonIcon slot="start" icon={heartOutline}></IonIcon>
                 </IonItem>
-                <IonItem button routerLink="/AddSnippets" lines="none">
-                  <IonLabel className='menu-button'>Add Snippets</IonLabel>
+                <IonItem button routerLink="/Search" lines="none">
+                  <IonLabel className='menu-button'>Search Recipes</IonLabel>
+                  <IonIcon slot="start" icon={searchOutline}></IonIcon>
+                </IonItem>
+                 <IonItem button routerLink="/About" lines="none">
+                  <IonLabel className='menu-button'>About</IonLabel>
+                  <IonIcon slot="start" icon={heartOutline}></IonIcon>
+                </IonItem>
+                 <IonItem button routerLink="/Support" lines="none">
+                  <IonLabel className='menu-button'>Support</IonLabel>
+                  <IonIcon slot="start" icon={heartOutline}></IonIcon>
                 </IonItem>
                 {email !== null && (
-                  <IonButton className='submit hover' expand="block" onClick={signedOut}>Sign Out</IonButton>
+                  <IonButton className='submit hover' expand="block" onClick={signedOut}>Log Out</IonButton>
                 )}
+                <IonIcon slot="start" icon={heartOutline}></IonIcon>
                 {email == null && (
-                  <IonButton className='submit hover' expand="block" routerLink="/Login">Sign in</IonButton>
+                  <IonButton className='submit hover' expand="block" routerLink="/Login">Log in</IonButton>
                 )}
               </IonMenuToggle>
             </IonList>
@@ -133,8 +151,32 @@ const App: React.FC = () => {
           <Route exact path="/Login">
             <Login />
           </Route>
+          <Route exact path="/Tutorial1">
+            <Tutorial1 />
+          </Route>
+          <Route exact path="/Tutorial2">
+            <Tutorial2 />
+          </Route>
+          <Route exact path="/Tutorial3">
+            <Tutorial3 />
+          </Route>
+          <Route exact path="/Home">
+            <Home />
+          </Route>
+          <Route exact path="/Favorites">
+            <Favorites />
+          </Route>
+          <Route exact path="/Search">
+            <Search />
+          </Route>
+          <Route exact path="/About">
+            <About />
+          </Route>
+          <Route exact path="/Support">
+            <Support />
+          </Route>
           <Route exact path="/">
-            <Redirect to="/Home" />
+            <Redirect to="/Welcome" />
           </Route>
 
         </IonRouterOutlet>
