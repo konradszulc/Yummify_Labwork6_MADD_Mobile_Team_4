@@ -1,0 +1,46 @@
+.about-content {
+  --background: #e8f5b8;
+}
+
+.about-toolbar {
+  --background: #e8f5b8;
+}
+
+.about-title {
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.about-grid {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #000;
+  margin: 20px 0 10px 0;
+}
+
+.info-card {
+  --background: #d4b896;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.card-text {
+  color: #000;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.card-text p {
+  margin: 0 0 8px 0;
+}
+
+.feature-list {
+  background: transparent;
+  padding: 0;
+}

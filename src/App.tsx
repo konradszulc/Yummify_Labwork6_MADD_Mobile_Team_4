@@ -35,6 +35,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import './App.css';
 import '@ionic/react/css/palettes/dark.always.css'; // Added dark theme -LK
 import Login from './pages/Login';
 import { useEffect, useState } from 'react';
@@ -46,6 +47,9 @@ import Home from './pages/Home';
 import Search from './pages/Search';
 import Tutorial1 from './pages/Tutorial1';
 import Tutorial3 from './pages/Tutorial3';
+import Support from './pages/Support';
+import Add from './pages/Add';
+import RecipeDetail from './pages/RecipeDetail';
 
 
 
@@ -85,20 +89,20 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonMenu contentId="main-pages">
+        <IonMenu contentId="main-pages" className="app-menu">
           <IonHeader>
-            <IonToolbar>
-              <IonTitle>Yummify Menu</IonTitle>
+            <IonToolbar className="menu-toolbar">
+              <IonTitle className="menu-title">Yummify Menu</IonTitle>
               <IonButtons slot="end">
                 <IonMenuToggle autoHide>
-                  <IonButton>
+                  <IonButton className="menu-close-button">
                     <IonIcon slot='start' icon={closeOutline} size="large"></IonIcon>
                   </IonButton>
                 </IonMenuToggle>
               </IonButtons>
             </IonToolbar>
           </IonHeader>
-          <IonContent>
+          <IonContent className="menu-content">
             <IonList>
               <IonItem lines="none">
                 <IonLabel className='email'>{email || "No User Logged In"}</IonLabel>
@@ -168,16 +172,24 @@ const App: React.FC = () => {
           <Route exact path="/Home">
             <Home />
           </Route>
+          <Route exact path="/Add">
+            <Add />
+          </Route>
           <Route exact path="/Favorites">
             <Favorites />
           </Route>
           <Route exact path="/Search">
             <Search />
           </Route>
+          <Route exact path="/recipe/:id">
+            <RecipeDetail />
+          </Route>
           <Route exact path="/About">
             <About />
           </Route>
-
+          <Route exact path="/Support">
+            <Support />
+          </Route>
           <Route exact path="/">
             <Redirect to="/Welcome" />
           </Route>

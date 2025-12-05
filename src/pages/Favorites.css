@@ -1,0 +1,56 @@
+.favorites-content {
+  --background: #e8f5b8;
+}
+
+.favorites-toolbar {
+  --background: #e8f5b8;
+}
+
+.favorites-title {
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  border: 2px solid #d2691e;
+  padding: 8px 16px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.favorites-grid {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.favorite-card {
+  --background: #f0f0f5;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.favorite-card-content {
+  padding: 12px;
+}
+
+.favorite-image {
+  width: 120px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.favorite-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  margin-left: 10px;
+}
+
+.favorite-name p {
+  margin: 0;
+}
+
+.favorite-heart {
+  font-size: 1.8rem;
+  color: #d2691e;
+}

@@ -1,0 +1,52 @@
+/* Menu Styling */
+.app-menu {
+  --background: #d2691e;
+  --width: 300px;
+  --max-height: 40vh;
+  border-radius: 0 0 16px 0;
+}
+
+.menu-toolbar {
+  --background: #d2691e;
+  --color: #000;
+}
+
+.menu-title {
+  color: #000;
+  font-weight: bold;
+}
+
+.menu-close-button {
+  --color: #000;
+}
+
+.menu-content {
+  --background: #d2691e;
+  border-radius: 0 0 16px 0;
+}
+
+.menu-content ion-list {
+  background: transparent;
+}
+
+.menu-content ion-item {
+  --background: transparent;
+  --color: #000;
+}
+
+.menu-content ion-label {
+  color: #000;
+  font-weight: 500;
+}
+
+.menu-content ion-icon {
+  color: #000;
+}
+
+.email {
+  font-weight: 600;
+}
+
+.menu-button {
+  font-weight: 500;
+}
