@@ -1,81 +1,81 @@
 .home-content {
-  --background: #e8f5b8;
+    --background: #e8f5b8;
 }
 
 .home-toolbar {
-  --background: #e8f5b8;
+    --background: #e8f5b8;
 }
 
 .home-title {
-  font-weight: bold;
-  color: #000;
-  text-align: center;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
 }
 
 .home-grid {
-  max-width: 600px;
-  margin: 0 auto;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .explore-button {
-  --background: transparent;
-  --border-color: #d2691e;
-  --border-width: 2px;
-  --border-style: solid;
-  --color: #d2691e;
-  --border-radius: 4px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: none;
-  margin: 10px 0 20px 0;
-  height: 32px;
+    --background: transparent;
+    --border-color: #d2691e;
+    --border-width: 2px;
+    --border-style: solid;
+    --color: #d2691e;
+    --border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: none;
+    margin: 10px 0 20px 0;
+    height: 32px;
 }
 
 .recipe-card {
-  --background: #f0f0f5;
-  border-radius: 12px;
-  margin-bottom: 15px;
+    --background: #f0f0f5;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
 
 .recipe-card-content {
-  padding: 12px;
+    padding: 12px;
 }
 
 .recipe-image {
-  width: 120px;
-  height: 80px;
-  border-radius: 8px;
-  object-fit: cover;
+    width: 120px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .recipe-name {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #000;
-  margin-left: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    margin-left: 10px;
 }
 
 .recipe-name p {
-  margin: 0;
+    margin: 0;
 }
 
 .favorite-icon {
-  font-size: 1.8rem;
-  color: #999;
-  cursor: pointer;
+    font-size: 1.8rem;
+    color: #999;
+    cursor: pointer;
 }
 
 .favorite-icon.filled {
-  color: #d2691e;
+    color: #d2691e;
 }
 
 .add-fab {
-  margin-bottom: 20px;
-  margin-right: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
 }
 
 .add-fab-button {
-  --background: #5a7d5a;
-  --background-activated: #4a6d4a;
-  --color: #000;
+    --background: #5a7d5a;
+    --background-activated: #4a6d4a;
+    --color: #000;
 }

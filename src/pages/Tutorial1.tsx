@@ -46,13 +46,7 @@ const Tutorial1: React.FC = () => {
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonButton
-                fill="clear"
-                className="skip-button"
-                routerLink="/Home"
-              >
-                Skip
-              </IonButton>
+              <IonButton fill="clear"className="skip-button" routerLink="/Home">Skip</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

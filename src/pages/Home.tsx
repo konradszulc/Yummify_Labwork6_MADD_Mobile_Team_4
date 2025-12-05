@@ -20,7 +20,7 @@ const Home: React.FC = () => {
   ]);
 
   const toggleFavorite = (id: number) => {
-    setRecipes(recipes.map(recipe => 
+    setRecipes(recipes.map(recipe =>
       recipe.id === id ? { ...recipe, isFavorite: !recipe.isFavorite } : recipe
     ));
   };

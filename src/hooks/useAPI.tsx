@@ -27,7 +27,7 @@ interface MealData {
   strArea: string;
 }
 
-// TheMealDB is completely free - no API key needed!
+// TheMealDB is completely free, no API key needed just the base URL
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
 
 export const useMealAPI = () => {

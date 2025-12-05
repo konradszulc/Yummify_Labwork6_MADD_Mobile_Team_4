@@ -10,10 +10,12 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
 
     useEffect(() => {
         const logIn = onAuthStateChanged(auth, (user: User | null) => {
-            if (user) {
+            // Only redirect if we're actively logging in
+            if (user && isLoggingIn) {
                 // User is signed in, show success toast and redirect after delay
                 setIsOpen(true);
                 setTimeout(() => {
@@ -24,7 +26,7 @@ const Login: React.FC = () => {
 
         // Cleanup logIn on unmount
         return () => logIn();
-    }, []);
+    }, [isLoggingIn]);
 
     async function loginComplete() {
         //Checking requirements are met
@@ -33,6 +35,8 @@ const Login: React.FC = () => {
             return;
         }
 
+        // Set flag before logging in
+        setIsLoggingIn(true);
         // Just call loginUser - auth state change will handle the rest
         await loginUser(email, password);
     }

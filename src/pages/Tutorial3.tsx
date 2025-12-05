@@ -8,51 +8,31 @@ const Tutorial3: React.FC = () => {
         <IonGrid className="tutorial3-grid">
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonImg
-                src="src/images/search_food_recipes.png"
-                alt="Food Bowls"
-                className="tutorial-image"
-              />
+              <IonImg src="src/images/search_food_recipes.png" alt="Food Bowls" className="tutorial-image"></IonImg>
             </IonCol>
           </IonRow>
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonText>
-                <h1 className="tutorial-title">Search Food Recipes</h1>
-              </IonText>
+              <IonText className="tutorial-title">Search Food Recipes</IonText>
             </IonCol>
           </IonRow>
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonText className="tutorial-description">
-                <p>Find a new exciting recipe and save it to your list</p>
-              </IonText>
+              <IonText className="tutorial-description">Find a new exciting recipe and save it to your list</IonText>
             </IonCol>
           </IonRow>
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6">
-              <IonButton
-                expand="block"
-                className="next-button"
-                routerLink="/Home"
-              >
-                Next
-              </IonButton>
+              <IonButton expand="block" className="next-button" routerLink="/Home">Next</IonButton>
             </IonCol>
           </IonRow>
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonButton
-                fill="clear"
-                className="skip-button"
-                routerLink="/Home"
-              >
-                Skip
-              </IonButton>
+              <IonButton fill="clear" className="skip-button" routerLink="/Home">Skip</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
