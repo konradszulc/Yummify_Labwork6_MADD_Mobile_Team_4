@@ -11,6 +11,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
+    color: #da8f56;
     margin: 0;
 }
 
@@ -23,7 +24,7 @@
 }
 
 .register-input {
-    --background: #f0f0f5;
+    --background: black;
     --padding-start: 16px;
     --padding-end: 16px;
     --padding-top: 14px;
@@ -66,3 +67,4 @@
     text-decoration: none;
     margin-left: 5px;
 }
+
