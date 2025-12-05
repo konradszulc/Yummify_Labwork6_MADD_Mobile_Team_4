@@ -1,6 +1,6 @@
 import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
-import React, { useState } from 'react';
-import { loginUser } from '../firebaseConfig';
+import React, { useState, useEffect } from 'react';
+import { loginUser, auth, onAuthStateChanged, User } from '../firebaseConfig';
 import { Link, Redirect } from "react-router-dom"; // For conditional navigation - only after uer is logged in
 
 
@@ -9,6 +9,18 @@ const Login: React.FC = () => {
     const [password, setPassword] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
+
+    useEffect(() => {
+        const logIn = onAuthStateChanged(auth, (user: User | null) => {
+            if (user) {
+                // User is signed in
+                setLoggedIn(true);
+            }
+        });
+
+        // Cleanup logIn on unmount
+        return () => logIn();
+    }, []);
 
     async function loginComplete() {
         //Checking requirements are met
@@ -20,35 +32,31 @@ const Login: React.FC = () => {
         const resolution = await loginUser(email, password)
         if (resolution) {
             setIsOpen(true)
-
-            setTimeout(() => {
-                setLoggedIn(true); // This triggers <Redirect> below
-            }, 1000); // 1 second delay
+            // Auth state change will handle the redirect
         }
     }
 
     if (loggedIn) {
-    return <Redirect to="/LandingPage" />; // Conditional navigation
-  }
+        return <Redirect to="/LandingPage" />; // Conditional navigation
+    }
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonButtons slot = 'start'>
-                        <IonBackButton className='back-button' defaultHref = '/Home'></IonBackButton>
+                    <IonButtons slot='start'>
+                        <IonBackButton className='back-button' defaultHref='/Home'></IonBackButton>
                     </IonButtons>
                     <IonTitle className='login'>Login</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
-                <div className='placeholder-padding'></div>
                 <IonItem className='placeholder'>
                     <IonInput placeholder="Enter Email" onIonChange={(e) => setEmail(e.detail.value!)}></IonInput>
                 </IonItem>
                 <IonItem className='placeholder'>
                     <IonInput type="password" placeholder="Enter Password" onIonChange={(e) => setPassword(e.detail.value!)}></IonInput>
                 </IonItem>
-                <p className='account'>Don't have an Account? <Link to = {`register`}>Click here</Link> to Register</p>
+                <p className='account'>Don't have an Account? <Link to={`register`}>Click here</Link> to Register</p>
                 <IonButton className='hover submit' expand="block" onClick={loginComplete}>Sign in</IonButton>
                 <IonToast isOpen={isOpen} message="Succesfully logged in"
                     onDidDismiss={() => setIsOpen(false)}

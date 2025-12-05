@@ -1,6 +1,6 @@
-import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
-import React, { useState } from 'react';
-import { registerUser } from '../firebaseConfig'
+import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonPage, IonTitle, IonToast, IonToolbar } from '@ionic/react';
+import React, { useEffect, useState } from 'react';
+import { auth, onAuthStateChanged, registerUser, User } from '../firebaseConfig'
 import { Link, Redirect } from "react-router-dom"; // For redirecting after registration
 
 
@@ -10,10 +10,22 @@ const Register: React.FC = () => {
     const [password, setPassword] = useState('');
     const [conPassword, setConPassword] = useState('');
     const [isOpen, setIsOpen] = useState(false);
-    const [redirectToLogin, setRedirectToLogin] = useState(false); // Track redirect
+    const [redirectToTutorial, setRedirectToTutorial] = useState(false);
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user: User | null) => {
+            if (user) {
+                // User is signed in, show success toast and redirect
+                setIsOpen(true);
+                setRedirectToTutorial(true);
+            }
+        });
+
+        // Cleanup on unmount
+        return () => unsubscribe();
+    }, []);
 
     async function registerComplete() {
-        //error with match, due to slow useState render
         console.log(password, conPassword)
 
         //Checking requirements are met
@@ -26,31 +38,21 @@ const Register: React.FC = () => {
             return;
         }
 
-        const resolution = await registerUser(email, password)
-        if (resolution) {
-            setIsOpen(true)
-
-            setTimeout(() => {
-                setRedirectToLogin(true);
-            }, 1000);
-        }
+        // Just call registerUser - auth state change will handle the rest
+        await registerUser(email, password);
     }
 
-    if (redirectToLogin) {
-        return <Redirect to="/Login" />; // Conditional redirecting
+    if (redirectToTutorial) {
+        return <Redirect to="/Tutorial1" />;
     }
     return (
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonButtons slot='start'>
-                        <IonBackButton className='back-button' defaultHref='/Home'></IonBackButton>
-                    </IonButtons>
-                    <IonTitle className='registration'>Register</IonTitle>
+                    <IonTitle className='registration'>Create Account</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
-            <div className='placeholder-padding'></div>
                 <IonItem className='placeholder'>
                     <IonInput placeholder="Enter Email" onIonChange={(e) => setEmail(e.detail.value!)}></IonInput>
                 </IonItem>
@@ -62,9 +64,10 @@ const Register: React.FC = () => {
                 <IonItem className='placeholder'>
                     <IonInput type="password" placeholder="Confirm Password" onIonChange={(e) => setConPassword(e.detail.value!)}></IonInput>
                 </IonItem>
-                <p className='register-account'>Already have an Account? <Link to = {`login`}>Click here</Link> to Login</p>
 
                 <IonButton className='submit hover' expand="block" onClick={registerComplete}>Sign up</IonButton>
+
+                <p className='register-account'>Already Registered? <Link to = {`login`}>Log In</Link></p>
 
                 <IonToast isOpen={isOpen} message="User Created Succesfully"
                     onDidDismiss={() => setIsOpen(false)}

@@ -1,28 +1,20 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonHeader,IonPage, IonRow, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonImg, IonLabel, IonPage, IonRow} from '@ionic/react';
 
 import React from 'react';
+import './Welcome.css';
+import pizzaLogo from '../images/yummify_pizza_logo.png';
 
 
 const Welcome: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <div className='title-padding'></div>
-          <IonTitle className='title centered-content'>
-            <p className='welcome'>Welcome to</p>
-            CodAtlas</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className='ion-padding'>
-        <IonGrid>
-          <IonRow>
-            <IonCol size="12">
-              <div className='register-padding'></div>
-              <IonButton className='hover submit' routerLink="/Registration">Register</IonButton>
-              <p className='font1'>Already have an account?</p>
-              <p className='font2'>Click below to go to login</p>
-              <IonButton className='hover submit' routerLink="/Login">Login</IonButton>
+      <IonContent className='ion-padding welcome-page'>
+        <IonGrid className='welcome-grid'>
+          <IonRow className='ion-justify-content-center ion-align-items-center' style={{ height: '100%' }}>
+            <IonCol size="12" className="ion-text-center">
+              <IonLabel className='welcome-title'>YUMMIFY</IonLabel>
+              <IonImg src={pizzaLogo} alt="Yummify Pizza Logo" className='welcome-logo'></IonImg>
+              <IonButton expand="block" className='get-started-btn' routerLink="/Register" size="large">Get Started</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>
