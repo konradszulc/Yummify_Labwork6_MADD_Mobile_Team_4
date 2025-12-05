@@ -20,7 +20,7 @@ const Tutorial3: React.FC = () => {
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonText className="tutorial-description">Find a new exciting recipe and save it to your list</IonText>
+              <IonText className="tutorial-description">Find a new recipe and save it to your list</IonText>
             </IonCol>
           </IonRow>
 
