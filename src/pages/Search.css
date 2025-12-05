@@ -8,9 +8,11 @@
 }
 
 .search-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #000000;
+    color: #da8f56;
     text-align: center;
-    width: 100%;
-    padding-right: 40px;
 }
 
 .search-title h1 {
