@@ -15,7 +15,7 @@ const Login: React.FC = () => {
 
     useEffect(() => {
         setIsMounted(true);
-        
+
         const logIn = onAuthStateChanged(auth, (user: User | null) => {
             // Only redirect if we're actively logging in AND component is mounted
             if (user && isLoggingIn && isMounted) {
@@ -61,9 +61,7 @@ const Login: React.FC = () => {
                 <IonGrid className="login-grid">
                     <IonRow className="ion-justify-content-center">
                         <IonCol size="12" sizeMd="8" sizeLg="6">
-                            <IonText color="medium">
-                                <p className="login-subtitle">Welcome back! Please login to your account.</p>
-                            </IonText>
+                            <IonText color="medium" className="login-subtitle">Welcome back! Please login to your account</IonText>
                         </IonCol>
                     </IonRow>
 
