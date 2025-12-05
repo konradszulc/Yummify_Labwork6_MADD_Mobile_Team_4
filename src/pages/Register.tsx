@@ -13,10 +13,12 @@ const Register: React.FC = () => {
     const [agreedToTerms, setAgreedToTerms] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [redirectToTutorial, setRedirectToTutorial] = useState(false);
+    const [isRegistering, setIsRegistering] = useState(false);
 
     useEffect(() => {
         const createAccount = onAuthStateChanged(auth, (user: User | null) => {
-            if (user) {
+            // Only redirect if we're actively registering a new user
+            if (user && isRegistering) {
                 // User is signed in, show success toast and redirect after delay
                 setIsOpen(true);
                 setTimeout(() => {
@@ -27,7 +29,7 @@ const Register: React.FC = () => {
 
         // Cleanup on unmount
         return () => createAccount();
-    }, []);
+    }, [isRegistering]);
 
     async function registerComplete() {
         console.log(password, conPassword)
@@ -46,6 +48,8 @@ const Register: React.FC = () => {
             return;
         }
 
+        // Set flag before registering
+        setIsRegistering(true);
         // Just call registerUser - auth state change will handle the rest
         await registerUser(email, password);
     }

@@ -1,69 +1,68 @@
 .register-page {
-  --background: #e8f5b8;
+    --background: #e8f5b8;
 }
 
 .register-grid {
-  max-width: 600px;
-  margin: 0 auto;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .register-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #000;
-  text-align: center;
-  margin: 20px 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
 }
 
 .register-subtitle {
-  text-align: center;
-  color: #666;
-  font-size: 0.95rem;
-  margin-bottom: 30px;
-  line-height: 1.4;
+    text-align: center;
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+    line-height: 1.4;
 }
 
 .register-input {
-  --background: #f0f0f5;
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 14px;
-  --padding-bottom: 14px;
-  --border-radius: 8px;
-  margin-bottom: 20px;
-  font-size: 1rem;
+    --background: #f0f0f5;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 14px;
+    --padding-bottom: 14px;
+    --border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1rem;
 }
 
 .terms-col {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 .terms-label {
-  font-size: 0.95rem;
-  color: #333;
-  margin-left: 10px;
+    font-size: 0.95rem;
+    color: #333;
+    margin-left: 10px;
 }
 
 .signup-btn {
-  --background: #5a7d5a;
-  --background-hover: #4a6d4a;
-  --background-activated: #4a6d4a;
-  --border-radius: 8px;
-  --color: #fff;
-  font-weight: 600;
-  font-size: 1.1rem;
-  height: 50px;
-  margin: 20px 0;
+    --background: #5a7d5a;
+    --background-hover: #4a6d4a;
+    --background-activated: #4a6d4a;
+    --border-radius: 8px;
+    --color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    height: 50px;
+    margin: 20px 0;
 }
 
 .login-text {
-  font-size: 0.95rem;
-  color: #000000;   
+    font-size: 0.95rem;
+    color: #000000;
 }
 
 .login-link {
-  color: #d2691e;
-  font-weight: 600;
-  text-decoration: none;
-  margin-left: 5px;
+    color: #d2691e;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 5px;
 }

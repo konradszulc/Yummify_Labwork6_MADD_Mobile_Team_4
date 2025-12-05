@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonContent, IonGrid, IonImg, IonLabel, IonPage, IonRow} from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonGrid, IonImg, IonLabel, IonPage, IonRow } from '@ionic/react';
 
 import React from 'react';
 import './Welcome.css';
@@ -14,7 +14,7 @@ const Welcome: React.FC = () => {
             <IonCol size="12" className="ion-text-center">
               <IonLabel className='welcome-title'>YUMMIFY</IonLabel>
               <IonImg src={pizzaLogo} alt="Yummify Pizza Logo" className='welcome-logo'></IonImg>
-              <IonButton expand="block" className='get-started-btn' routerLink = '/Register' size="large">Get Started</IonButton>
+              <IonButton expand="block" className='get-started-btn' routerLink='/Register' size="large">Get Started</IonButton>
             </IonCol>
           </IonRow>
         </IonGrid>

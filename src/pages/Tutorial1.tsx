@@ -8,9 +8,9 @@ const Tutorial1: React.FC = () => {
         <IonGrid className="tutorial1-grid">
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonImg 
-                src="images/intro_tutorial1.png" 
-                alt="Kitchen" 
+              <IonImg
+                src="src/images/intro_tutorial1.png"
+                alt="Kitchen"
                 className="tutorial-image"
               />
             </IonCol>
@@ -34,8 +34,8 @@ const Tutorial1: React.FC = () => {
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6">
-              <IonButton 
-                expand="block" 
+              <IonButton
+                expand="block"
                 className="next-button"
                 routerLink="/Tutorial2"
               >
@@ -46,8 +46,8 @@ const Tutorial1: React.FC = () => {
 
           <IonRow className="ion-justify-content-center">
             <IonCol size="12" sizeMd="8" sizeLg="6" className="ion-text-center">
-              <IonButton 
-                fill="clear" 
+              <IonButton
+                fill="clear"
                 className="skip-button"
                 routerLink="/Home"
               >
