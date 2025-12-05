@@ -3,8 +3,9 @@
 }
 
 .search-toolbar {
-    --background: #e8f5b8;
-    --color: #333;
+    --background: black;
+    color: #da8f56;
+    text-align: center;
 }
 
 .search-title {
