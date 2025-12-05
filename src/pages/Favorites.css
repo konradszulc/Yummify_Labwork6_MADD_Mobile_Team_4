@@ -7,13 +7,11 @@
 }
 
 .favorites-title {
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #000;
+    background-color: #000;
+    color: #da8f56;
     text-align: center;
-    border: 2px solid #d2691e;
-    padding: 8px 16px;
-    display: inline-block;
-    margin: 0 auto;
 }
 
 .favorites-grid {

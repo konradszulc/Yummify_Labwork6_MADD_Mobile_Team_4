@@ -8,7 +8,11 @@
 }
 
 .recipe-detail-title {
-    padding: 0 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #000;
+    color: #da8f56;
+    text-align: center;
 }
 
 .recipe-detail-title h1 {

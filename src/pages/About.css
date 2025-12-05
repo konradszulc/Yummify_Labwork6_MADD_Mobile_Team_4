@@ -7,8 +7,10 @@
 }
 
 .about-title {
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #000;
+    background-color: #000;
+    color: #da8f56;
     text-align: center;
 }
 
