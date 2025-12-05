@@ -57,7 +57,7 @@ const Search: React.FC = () => {
 
           <IonRow>
             <IonCol size="12" className="search-image-container">
-              <IonImg src="https://images.unsplash.com/photo-1506368083636-6defb67639a7?w=800&q=80" alt="Fresh ingredients" className="search-hero-image"></IonImg>
+              <IonImg src="src/images/background_ingredients.png" alt="Fresh ingredients" className="search-hero-image"></IonImg>
               <IonSearchbar value={searchQuery} onIonInput={handleSearch} placeholder="e.g. Chocolate brownies" className="custom-searchbar search-bar-wrapper"></IonSearchbar>
             </IonCol>
           </IonRow>
