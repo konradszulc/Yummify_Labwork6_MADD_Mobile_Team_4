@@ -3,8 +3,9 @@
 }
 
 .recipe-detail-toolbar {
-    --background: #e8f5b8;
-    --color: #333;
+    --background: black;
+    text-align: center;
+    color: #da8f56;
 }
 
 .recipe-detail-title {

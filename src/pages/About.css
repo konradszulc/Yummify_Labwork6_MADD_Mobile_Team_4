@@ -3,7 +3,9 @@
 }
 
 .about-toolbar {
-    --background: #e8f5b8;
+    --background: black;
+    text-align: center;
+    color: #da8f56;
 }
 
 .about-title {

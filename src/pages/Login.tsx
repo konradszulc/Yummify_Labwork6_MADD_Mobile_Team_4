@@ -11,11 +11,14 @@ const Login: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [loggedIn, setLoggedIn] = useState(false);
     const [isLoggingIn, setIsLoggingIn] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
+
         const logIn = onAuthStateChanged(auth, (user: User | null) => {
-            // Only redirect if we're actively logging in
-            if (user && isLoggingIn) {
+            // Only redirect if we're actively logging in AND component is mounted
+            if (user && isLoggingIn && isMounted) {
                 // User is signed in, show success toast and redirect after delay
                 setIsOpen(true);
                 setTimeout(() => {
@@ -25,8 +28,11 @@ const Login: React.FC = () => {
         });
 
         // Cleanup logIn on unmount
-        return () => logIn();
-    }, [isLoggingIn]);
+        return () => {
+            setIsMounted(false);
+            logIn();
+        };
+    }, [isLoggingIn, isMounted]);
 
     async function loginComplete() {
         //Checking requirements are met
@@ -37,8 +43,15 @@ const Login: React.FC = () => {
 
         // Set flag before logging in
         setIsLoggingIn(true);
-        // Just call loginUser - auth state change will handle the rest
-        await loginUser(email, password);
+        
+        try {
+            // Just call loginUser  auth state change will handle the rest
+            await loginUser(email, password);
+        } catch (error) {
+            // If login fails, reset the flag
+            setIsLoggingIn(false);
+            console.error("Login failed:", error);
+        }
     }
 
     if (loggedIn) {
@@ -55,9 +68,7 @@ const Login: React.FC = () => {
                 <IonGrid className="login-grid">
                     <IonRow className="ion-justify-content-center">
                         <IonCol size="12" sizeMd="8" sizeLg="6">
-                            <IonText color="medium">
-                                <p className="login-subtitle">Welcome back! Please login to your account.</p>
-                            </IonText>
+                            <IonText color="medium" className="login-subtitle">Welcome back! Please login to your account</IonText>
                         </IonCol>
                     </IonRow>
 
