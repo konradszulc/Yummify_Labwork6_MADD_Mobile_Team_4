@@ -18,7 +18,7 @@ const Register: React.FC = () => {
 
     useEffect(() => {
         setIsMounted(true);
-        
+
         const createAccount = onAuthStateChanged(auth, (user: User | null) => {
             // Only redirect if we're actively registering a new user AND component is mounted
             if (user && isRegistering && isMounted) {
@@ -56,12 +56,19 @@ const Register: React.FC = () => {
 
         // Set flag before registering
         setIsRegistering(true);
-        // Just call registerUser - auth state change will handle the rest
-        await registerUser(email, password);
+        
+        try {
+            // Just call registerUser - auth state change will handle the rest
+            await registerUser(email, password);
+        } catch (error) {
+            // If registration fails, reset the flag
+            setIsRegistering(false);
+            console.error("Registration failed:", error);
+        }
     }
 
     if (redirectToTutorial) {
-        return <Redirect to="/Tutorial1"/>;
+        return <Redirect to="/Tutorial1" />;
     }
     return (
         <IonPage>

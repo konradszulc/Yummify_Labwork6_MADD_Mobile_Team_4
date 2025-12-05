@@ -13,19 +13,6 @@
     background-color: #000000;
     color: #da8f56;
     text-align: center;
-<<<<<<< HEAD
-    width: 100%;
-    color: #da8f56;
-    padding-right: 40px;
-=======
->>>>>>> 64f13dd3b378e8332d677ddd3e003ec4967d1ff2
-}
-
-.search-title h1 {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
-    color: #333;
 }
 
 .search-description {

@@ -90,12 +90,8 @@ const RecipeDetail: React.FC = () => {
                 <IonGrid>
                     <IonRow>
                         <IonCol size="12">
-                            <IonText className="recipe-detail-title">
-                                <h1>{recipe.title}</h1>
-                            </IonText>
-                            <IonText className="recipe-source">
-                                <p>Recipe from online database</p>
-                            </IonText>
+                            <IonText className="recipe-detail-title">{recipe.title}</IonText>
+                            <IonText className="recipe-source">Recipe from online database</IonText>
                         </IonCol>
                     </IonRow>
 

@@ -23,7 +23,7 @@ const Support: React.FC = () => {
             <IonHeader>
                 <IonToolbar className="support-toolbar">
                     <IonButtons slot="start">
-                        <IonBackButton defaultHref="/Home" />
+                        <IonBackButton defaultHref="/Home"></IonBackButton>
                     </IonButtons>
                     <IonTitle className="support-title">Support</IonTitle>
                 </IonToolbar>
