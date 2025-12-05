@@ -43,15 +43,8 @@ const Login: React.FC = () => {
 
         // Set flag before logging in
         setIsLoggingIn(true);
-        
-        try {
-            // Just call loginUser  auth state change will handle the rest
-            await loginUser(email, password);
-        } catch (error) {
-            // If login fails, reset the flag
-            setIsLoggingIn(false);
-            console.error("Login failed:", error);
-        }
+        // Just call loginUser - auth state change will handle the rest
+        await loginUser(email, password);
     }
 
     if (loggedIn) {
