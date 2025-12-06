@@ -2,10 +2,12 @@
     --background: #e8f5b8;
     --padding-start: 0;
     --padding-end: 0;
+    overflow-x: hidden;
 }
 
 .search-content ion-grid {
     padding: 0;
+    margin: 0;
 }
 
 /* Remove the global ion-col padding rule and be more specific */

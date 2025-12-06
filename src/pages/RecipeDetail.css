@@ -118,7 +118,8 @@
 
 .instructions-text {
     padding: 0 20px;
-    margin-bottom: 40px;
+    margin: 0 20px 40px 20px;
+    display: block;
 }
 
 .instructions-text p {

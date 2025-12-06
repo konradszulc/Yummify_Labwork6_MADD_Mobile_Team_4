@@ -25,13 +25,21 @@
 
 .register-input {
     --background: black;
+    --color: #fff;
     --padding-start: 16px;
     --padding-end: 16px;
     --padding-top: 14px;
     --padding-bottom: 14px;
     --border-radius: 8px;
+    --placeholder-color: #fff;
+    --placeholder-opacity: 0.7;
     margin-bottom: 20px;
     font-size: 1rem;
+}
+
+.register-input::placeholder {
+    color: #fff !important;
+    opacity: 1;
 }
 
 .terms-col {

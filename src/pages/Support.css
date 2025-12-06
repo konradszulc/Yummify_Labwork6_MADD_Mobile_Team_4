@@ -4,6 +4,7 @@
 
 .support-toolbar {
     --background: black;
+    text-align: center;
     color: #da8f56;
 }
 
@@ -16,21 +17,45 @@
 }
 
 .support-grid {
-    margin-top: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    margin: 20px 0 10px 0;
 }
 
 .info-card {
     --background: #d4b896;
     border-radius: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+}
+
+.card-text {
+    color: #000;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.card-text p {
+    margin: 0 0 8px 0;
+}
+
+.info-text {
+    color: #000 !important;
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    display: block;
 }
 
 .info-text p {
     color: #000;
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0;
-    text-align: center;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 8px 0;
 }
 
 .support-footer {
@@ -43,10 +68,23 @@
     --padding-bottom: 10px;
 }
 
+.contact-label {
+    color: #000 !important;
+    font-size: 1rem !important;
+    margin: 10px 0 5px 0;
+}
+
 .contact-label p {
     color: #000;
     font-size: 1rem;
     margin: 10px 0 5px 0;
+}
+
+.email-text {
+    color: #d2691e !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    margin: 5px 0;
 }
 
 .email-text p {
@@ -54,6 +92,12 @@
     font-size: 1rem;
     font-weight: 600;
     margin: 5px 0;
+}
+
+.response-text {
+    color: #000 !important;
+    font-size: 1rem !important;
+    margin: 5px 0 10px 0;
 }
 
 .response-text p {
