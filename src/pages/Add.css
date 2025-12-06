@@ -22,7 +22,8 @@
 }
 
 .add-input {
-    --background: #f0f0f5;
+    --background: #000;
+    --color: #fff;
     --padding-start: 16px;
     --padding-end: 16px;
     --padding-top: 14px;
@@ -33,7 +34,8 @@
 }
 
 .add-textarea {
-    --background: #f0f0f5;
+    --background: #000;
+    --color: #fff;
     --padding-start: 16px;
     --padding-end: 16px;
     --padding-top: 14px;
@@ -44,7 +46,8 @@
 }
 
 .add-textarea-large {
-    --background: #f0f0f5;
+    --background: #000;
+    --color: #fff;
     --padding-start: 16px;
     --padding-end: 16px;
     --padding-top: 14px;
@@ -71,7 +74,8 @@
 }
 
 .prep-input {
-    --background: #f0f0f5;
+    --background: #000;
+    --color: #fff;
     --padding-start: 8px;
     --padding-end: 8px;
     --padding-top: 8px;

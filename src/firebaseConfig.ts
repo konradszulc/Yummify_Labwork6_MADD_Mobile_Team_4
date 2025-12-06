@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, User } from "firebase/auth"
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     //using .env to hide public API
@@ -15,6 +16,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const auth = getAuth(app)
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 export async function loginUser(email: string, password: string) {
 
@@ -64,5 +66,5 @@ export async function userSignOut(){
     }
     
 }
-export { db, auth, onAuthStateChanged };
+export { db, auth, storage, onAuthStateChanged };
 export type { User };
