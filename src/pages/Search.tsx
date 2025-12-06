@@ -86,7 +86,7 @@ const Search: React.FC = () => {
 
           <IonRow>
             {recipes.map((recipe) => (
-              <IonCol size="12" sizeMd="6" key={recipe.id}>
+              <IonCol size="12" sizeMd="6" sizeLg="4" key={recipe.id} className="ion-padding">
                 <IonCard className="recipe-card" routerLink={`/recipe/${recipe.id}`}>
                   <IonImg src={recipe.image} alt={recipe.title} />
                   <IonCardHeader>
